@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax Calculator</title>
+	<link rel="icon" type="image/x-icon" href="./cal_icon.png">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .result-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .result-box {
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 45%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tax Calculator</h1>
+        <form id="taxForm">
+            <label for="income">Annual Income:</label>
+            <input type="text" id="income" name="income" required oninput="this.value = formatIndianNumbering(this.value)">
+
+            <div class="regime-container">
+                <div class="regime-box">
+                    <h2>Old Tax Regime Deductions</h2>
+                    <label for="standardDeductionOld">Standard Deduction:</label>
+                    <input type="text" id="standardDeductionOld" name="standardDeductionOld" required oninput="this.value = 			formatIndianNumbering(this.value)">
+                    <label for="hra">HRA (Rent Paid):</label>
+                    <input type="text" id="hra" name="hra" required oninput="this.value = formatIndianNumbering(this.value)">
+                    <label for="lta">LTA (Travel Expenses):</label>
+                    <input type="text" id="lta" name="lta" required oninput="this.value = formatIndianNumbering(this.value)">
+                    <label for="section80C">Section 80C (Investments):</label>
+                    <input type="text" id="section80C" name="section80C" required oninput="this.value = formatIndianNumbering(this.value)">
+                    <label for="section80CCD1B">Section 80CCD(1B) (NPS):</label>
+                    <input type="text" id="section80CCD1B" name="section80CCD1B" required oninput="this.value = formatIndianNumbering(this.value)">
+                    <label for="section80D">Section 80D (Health Insurance):</label>
+                    <input type="text" id="section80D" name="section80D" required oninput="this.value = formatIndianNumbering(this.value)">
+                    <label for="section80E">Section 80E (Education Loan Interest):</label>
+                    <input type="text" id="section80E" name="section80E" required oninput="this.value = formatIndianNumbering(this.value)">
+                    <label for="section80TTA">Section 80TTA (Savings Interest):</label>
+                    <input type="text" id="section80TTA" name="section80TTA" required oninput="this.value = formatIndianNumbering(this.value)">
+                    <label for="section80DDB">Section 80DDB (Medical):</label>
+                    <input type="text" id="section80DDB" name="section80DDB" required oninput="this.value = formatIndianNumbering(this.value)">
+                    <label for="section80DD">Section 80DD/80U (Disability):</label>
+                    <input type="text" id="section80DD" name="section80DD" required oninput="this.value = formatIndianNumbering(this.value)">
+                </div>
+
+                <div class="regime-box">
+                    <h2>New Tax Regime Deductions</h2>
+                    <label for="standardDeductionNew">Standard Deduction:</label>
+                    <input type="text" id="standardDeductionNew" name="standardDeductionNew" required oninput="this.value = formatIndianNumbering(this.value)">
+                    <label for="npsContribution">NPS Contribution (Employer):</label>
+                    <input type="text" id="npsContribution" name="npsContribution" required oninput="this.value = formatIndianNumbering(this.value)">
+                    <label for="transportAllowance">Transport Allowance (Specially Abled):</label>
+                    <input type="text" id="transportAllowance" name="transportAllowance" required oninput="this.value = formatIndianNumbering(this.value)">
+                    <label for="conveyanceAllowance">Conveyance Allowance:</label>
+                    <input type="text" id="conveyanceAllowance" name="conveyanceAllowance" required oninput="this.value = formatIndianNumbering(this.value)">
+                    <label for="dailyAllowance">Daily Allowance:</label>
+                    <input type="text" id="dailyAllowance" name="dailyAllowance" required oninput="this.value = formatIndianNumbering(this.value)">
+                    <label for="epfPpfInterest">EPF & PPF Interest:</label>
+                    <input type="text" id="epfPpfInterest" name="epfPpfInterest" required oninput="this.value = formatIndianNumbering(this.value)">
+                </div>
+            </div>
+
+            <button type="button" onclick="calculateTax()">Calculate</button>
+        </form>
+        <div class="result-container">
+            <div class="result-box" id="resultOld"></div>
+            <div class="result-box" id="resultNew"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
